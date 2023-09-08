@@ -19,9 +19,6 @@ public interface CourseRepo extends JpaRepository<Course, Long> {
     @Query("SELECT NEW global.dto.response.CourseResponse(r.id,r.courseName,r.dateOfStart,r.description) FROM Course r WHERE r.id=:courseId")
     Optional<CourseResponse> getCourseById(Long courseId);
 
-//    @Query("SELECT NEW global.dto.response.CourseResponse(r.id,r.courseName,r.dateOfStart,r.description,r.company) FROM Course r WHERE r.id=:courseId")
-//    Course getCourseBYIdNot(Long courseId);
-
     @Query("SELECT c FROM Course c WHERE c.id=:courseId")
     Course getCourseBYIdNot(Long courseId);
 
@@ -36,5 +33,6 @@ public interface CourseRepo extends JpaRepository<Course, Long> {
 
     @Query("select new global.dto.response.CourseResponse(c.id, c.courseName, c.dateOfStart, c.description) from Course c where c.company.id = :companyId order by c.dateOfStart desc ")
     List<CourseResponse> getAllSortedCourseDesc(Long companyId);
+
 
 }

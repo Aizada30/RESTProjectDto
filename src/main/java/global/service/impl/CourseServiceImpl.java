@@ -33,7 +33,9 @@ public class CourseServiceImpl implements CourseService {
         course.setDateOfStart(courseRequest.getDateOfStart());
         course.setDescription(courseRequest.getDescription());
         course.setCompany(company);
+        company.getCourses().add(course);
         courseRepo.save(course);
+        companyRepo.save(company);
         return new SimpleResponse(
                 HttpStatus.OK,
                 String.format("Company with id: %s successfully saved in company " + companyId, course.getId())

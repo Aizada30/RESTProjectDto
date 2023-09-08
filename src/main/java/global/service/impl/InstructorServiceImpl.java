@@ -86,6 +86,7 @@ public class InstructorServiceImpl implements InstructorService {
       company.getInstructors().add(instructor);
       instructor.getCompanies().add(company);
       instructorRepo.save(instructor);
+      companyRepo.save(company);
         return new SimpleResponse(
                 HttpStatus.OK,
                 String.format("Instructor with id: %s successfully assigned to company with id:%s ",instructorId,company.getId())

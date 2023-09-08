@@ -3,15 +3,12 @@ package global.service.impl;
 import global.dto.SimpleResponse;
 import global.dto.request.CompanyRequest;
 import global.dto.response.CompanyResponse;
-import global.dto.response.InstructorResponse;
 import global.entity.Company;
-import global.entity.Instructor;
 import global.repo.CompanyRepo;
-import global.repo.InstructorRepo;
 import global.service.CompanyService;
-import global.service.InstructorService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +19,7 @@ import java.util.NoSuchElementException;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class CompanyServiceImpl implements CompanyService {
 
     private final CompanyRepo companyRepo;
@@ -29,10 +27,10 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public SimpleResponse saveCompany(CompanyRequest companyRequest) {
         Company company = new Company();
-        company.setName(companyRequest.getName());
-        company.setAddress(companyRequest.getCountry());
-        company.setCountry(companyRequest.getAddress());
-        company.setPhoneNumber(companyRequest.getPhoneNumber());
+        company.setName(companyRequest.name());
+        company.setAddress(companyRequest.country());
+        company.setCountry(companyRequest.address());
+        company.setPhoneNumber(companyRequest.phoneNumber());
         company.setCreatedAt(LocalDate.now());
         companyRepo.save(company);
         return new SimpleResponse(
@@ -50,10 +48,10 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public SimpleResponse updateCompany(Long companyId, CompanyRequest companyRequest) {
         Company company = companyRepo.getBYId(companyId);
-        company.setName(companyRequest.getName());
-        company.setAddress(companyRequest.getAddress());
-        company.setCountry(companyRequest.getCountry());
-        company.setPhoneNumber(companyRequest.getPhoneNumber());
+        company.setName(companyRequest.name());
+        company.setAddress(companyRequest.address());
+        company.setCountry(companyRequest.country());
+        company.setPhoneNumber(companyRequest.phoneNumber());
         return new SimpleResponse(
                 HttpStatus.OK,
                 String.format("Company with id: %s successfully updated", company.getId())

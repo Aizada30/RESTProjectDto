@@ -1,5 +1,6 @@
 package global.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,6 +33,7 @@ public class Instructor {
     private String phoneNumber;
     private String specialization;
     private LocalDate createdAt;
+    @JsonIgnore
     @ManyToMany(mappedBy = "instructors",cascade ={PERSIST,DETACH,REFRESH,MERGE})
     private List<Company>companies;
     @OneToMany(mappedBy = "instructor",cascade = ALL)

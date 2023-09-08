@@ -1,9 +1,10 @@
 package global.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import global.StudyFormal.StudyFormat;
+import global.validation.Email;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,6 @@ import java.time.LocalDate;
 
 import static jakarta.persistence.CascadeType.*;
 import static jakarta.persistence.CascadeType.REFRESH;
-
 @Entity
 @Table(name = "students")
 @Getter
@@ -34,6 +34,7 @@ public class Student {
     private String lastName;
     private String phoneNumber;
     @Column(unique = true)
+    @Email
     private String email;
     private StudyFormat studyFormat;
     private LocalDate createdAt;

@@ -1,14 +1,16 @@
 package global.dto.request;
 
+import global.validation.PhoneNumberValid;
 import lombok.Getter;
 import lombok.Setter;
 
 
-@Getter
-@Setter
-public class CompanyRequest {
-    private String name;
-    private String country;
-    private String address;
-    private String phoneNumber;
+
+public record CompanyRequest (
+         String name,
+         String country,
+         String address,
+        @PhoneNumberValid
+         String phoneNumber
+){
 }

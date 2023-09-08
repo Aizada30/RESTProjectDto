@@ -1,7 +1,9 @@
 package global.entity;
 
-import global.dto.response.InstructorResponse;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import global.validation.PhoneNumberValid;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,9 +36,12 @@ public class Company {
     private String address;
     private String phoneNumber;
     private LocalDate createdAt;
+    private Role role;
     @ManyToMany(cascade ={PERSIST,DETACH,REFRESH,MERGE})
+    @JsonIgnore
     private List<Instructor> instructors;
     @OneToMany(mappedBy = "company",cascade=ALL)
+    @JsonIgnore
     private List<Course>courses;
 
 }

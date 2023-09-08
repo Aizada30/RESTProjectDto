@@ -16,7 +16,6 @@ public interface InstructorService {
     SimpleResponse updateInstructor(Long instructorId,InstructorRequest instructorRequest);
     InstructorResponse getInstructorById(Long instructorId);
     SimpleResponse assignWithCompany(Long companyId,Long instructorId);
-
     StudentCountResponse getCountStudent(Long id);
 
 }

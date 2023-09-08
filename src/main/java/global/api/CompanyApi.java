@@ -4,6 +4,7 @@ import global.dto.SimpleResponse;
 import global.dto.request.CompanyRequest;
 import global.dto.response.CompanyResponse;
 import global.service.CompanyService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class CompanyApi {
     }
 
     @PostMapping
-    public SimpleResponse saveCompany(@RequestBody CompanyRequest companyRequest){
+    public SimpleResponse saveCompany(@RequestBody @Valid CompanyRequest companyRequest){
         return companyService.saveCompany(companyRequest);
     }
 

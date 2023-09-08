@@ -23,23 +23,7 @@ public class CompanyResponse {
     private String address;
     private String phoneNumber;
     private LocalDate createdAt;
-    @ManyToMany(cascade ={PERSIST,DETACH,REFRESH,MERGE})
-    private List<Instructor> instructors;
-    @OneToMany(mappedBy = "company",cascade=ALL)
-    private List<Course>courses;
 
-    public CompanyResponse(Long id, String name, String country,
-                           String address, String phoneNumber, LocalDate createdAt,
-                           List<Instructor> instructors, List<Course> courses) {
-        this.id = id;
-        this.name = name;
-        this.country = country;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.createdAt = createdAt;
-        this.instructors = instructors;
-        this.courses = courses;
-    }
 
     public CompanyResponse(Long id, String name, String country, String address, String phoneNumber, LocalDate createdAt) {
         this.id = id;
@@ -48,6 +32,5 @@ public class CompanyResponse {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.createdAt = createdAt;
-
     }
 }
