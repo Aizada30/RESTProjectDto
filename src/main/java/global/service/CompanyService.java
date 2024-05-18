@@ -13,5 +13,4 @@ public interface CompanyService {
     SimpleResponse updateCompany(Long companyId,CompanyRequest companyRequest);
     SimpleResponse deleteCompany(Long companyId);
     CompanyResponse getCompanyById(Long companyId);
-
 }

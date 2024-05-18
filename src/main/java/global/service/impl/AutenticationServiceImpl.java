@@ -7,16 +7,13 @@ import global.entity.User;
 import global.repo.UserRepo;
 import global.security.jwt.JwtService;
 import global.service.AutenticationService;
-import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class AutenticationServiceImpl implements AutenticationService {
 
@@ -24,29 +21,27 @@ public class AutenticationServiceImpl implements AutenticationService {
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
 
-
     @Override
     public AuthenticationResponse signUp(SignUpRequest signUpRequest) {
         if (userRepo.existsByEmail(signUpRequest.email())) {
-            throw new EntityExistsException(String.format(
+            throw new BadCredentialsException(String.format(
                     "User with email: %s already exists!", signUpRequest.email()));
         }
-
         User user = User.builder()
                 .email(signUpRequest.email())
                 .password(passwordEncoder.encode(signUpRequest.password()))
                 .role(signUpRequest.role())
                 .build();
-
         userRepo.save(user);
-
         String jwtToken = jwtService.generationToken(user);
         return AuthenticationResponse
                 .builder()
                 .token(jwtToken)
                 .email(user.getEmail())
+                .role(user.getRole())
                 .build();
     }
+
     @Override
     public AuthenticationResponse signIn(SignInRequest signInRequest) {
         User user = userRepo.getUserByEmail(signInRequest.email())
@@ -70,5 +65,4 @@ public class AutenticationServiceImpl implements AutenticationService {
                 .token(jwtToken)
                 .build();
     }
-
 }

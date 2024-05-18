@@ -8,13 +8,11 @@ import global.entity.Student;
 import global.repo.GroupRepo;
 import global.repo.InstructorRepo;
 import global.repo.StudentRepo;
-import global.service.StudentCountResponse;
 import global.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
@@ -26,9 +24,7 @@ import java.util.NoSuchElementException;
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepo studentRepo;
-
     private final GroupRepo groupRepo;
-    private final InstructorRepo instructorRepo;
 
     @Override
     public SimpleResponse saveStudent(StudentRequest studentRequest) {
@@ -108,8 +104,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<StudentResponse> getFilter(String studyFormat) {
-        Student student=new Student();
-        if(studyFormat.equals("ONLINE")) {
+        Student student = new Student();
+        if (studyFormat.equals("ONLINE")) {
             return studentRepo.getFilterOnLine();
         } else if (studyFormat.equals("OFFLINE")) {
             return studentRepo.getFilterOffLine();
@@ -124,6 +120,4 @@ public class StudentServiceImpl implements StudentService {
                 .studyFormat(student.getStudyFormat())
                 .build());
     }
-
-
 }

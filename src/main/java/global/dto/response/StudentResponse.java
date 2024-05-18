@@ -1,12 +1,9 @@
 package global.dto.response;
 
 import global.StudyFormal.StudyFormat;
-import global.entity.Group;
-import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDate;
 
 @Setter

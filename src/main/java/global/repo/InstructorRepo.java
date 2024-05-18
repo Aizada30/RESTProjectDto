@@ -5,10 +5,7 @@ import global.entity.Instructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
-
 import java.util.List;
-
 
 public interface InstructorRepo extends JpaRepository<Instructor, Long> {
 
@@ -22,6 +19,4 @@ public interface InstructorRepo extends JpaRepository<Instructor, Long> {
 
     @Query("select (count(s)) from Instructor i join i.companies c join c.courses co join co.groups g join g.students s where i.id =:instructorId")
     int getAllCount(@Param("instructorId") Long instructorId);
-
-
 }

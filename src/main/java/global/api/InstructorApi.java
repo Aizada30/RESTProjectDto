@@ -5,9 +5,9 @@ import global.dto.request.InstructorRequest;
 import global.dto.response.InstructorResponse;
 import global.service.InstructorService;
 import global.service.StudentCountResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RequestMapping("/api/instructor")
@@ -23,7 +23,7 @@ public class InstructorApi {
     }
 
     @PostMapping
-    public SimpleResponse saveInstructor(@RequestBody  InstructorRequest instructorRequest){
+    public SimpleResponse saveInstructor(@RequestBody @Valid InstructorRequest instructorRequest){
         return instructorService.saveInstructor(instructorRequest);
     }
 

@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -95,7 +94,8 @@ public class InstructorServiceImpl implements InstructorService {
 
     @Override
     public StudentCountResponse getCountStudent(Long id) {
-            return StudentCountResponse.builder().studentCount(instructorRepo.getAllCount(id)).build();
-        
+            return StudentCountResponse.builder()
+                    .studentCount(instructorRepo.getAllCount(id))
+                    .build();
     }
 }

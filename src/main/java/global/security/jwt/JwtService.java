@@ -6,13 +6,9 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-
 import java.time.ZonedDateTime;
 import java.util.Date;
 
-/**
- * Abdyrazakova Aizada
- */
 @Component
 public class JwtService {
     @Value("${spring.jwt.secret_key}")
@@ -31,7 +27,6 @@ public class JwtService {
                 com.auth0.jwt.JWT.require(
                                 Algorithm.HMAC256(secretKey))
                         .build();
-
         DecodedJWT jwt = jwtVerifier.verify(token);
         return jwt.getClaim("username").asString();
     }

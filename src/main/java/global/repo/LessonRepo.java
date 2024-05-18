@@ -1,11 +1,9 @@
 package global.repo;
 
-import global.dto.request.LessonRequest;
 import global.dto.response.LessonResponse;
 import global.entity.Lesson;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
 import java.util.List;
 
 public interface LessonRepo extends JpaRepository<Lesson, Long> {

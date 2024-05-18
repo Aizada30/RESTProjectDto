@@ -4,7 +4,6 @@ import global.dto.response.GroupResponse;
 import global.entity.Group;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -21,5 +20,4 @@ public interface GroupRepo extends JpaRepository<Group, Long> {
 
     @Query("SELECT COUNT(g) FROM Group g")
     Integer countStudent(Long groupID);
-
 }

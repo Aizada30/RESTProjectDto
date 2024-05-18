@@ -4,10 +4,8 @@ import global.dto.SimpleResponse;
 import global.dto.request.GroupRequest;
 import global.dto.response.GroupResponse;
 import global.service.GroupService;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RequiredArgsConstructor

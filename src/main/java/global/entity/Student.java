@@ -3,15 +3,13 @@ package global.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import global.StudyFormal.StudyFormat;
 import global.validation.Email;
+import global.validation.PhoneNumberValid;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDate;
-
 import static jakarta.persistence.CascadeType.*;
 import static jakarta.persistence.CascadeType.REFRESH;
 @Entity
@@ -32,6 +30,7 @@ public class Student {
     private Long id;
     private String firstName;
     private String lastName;
+    @PhoneNumberValid
     private String phoneNumber;
     @Column(unique = true)
     @Email
@@ -42,5 +41,4 @@ public class Student {
     @ManyToOne(cascade ={PERSIST,DETACH,REFRESH,MERGE})
     @JsonIgnore
     private Group group;
-
 }

@@ -1,15 +1,14 @@
 package global.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import global.validation.PhoneNumberValid;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDate;
 import java.util.List;
-
 import static jakarta.persistence.CascadeType.*;
 
 @Entity
@@ -30,6 +29,7 @@ public class Instructor {
     private Long id;
     private String firstName;
     private String lastName;
+    @PhoneNumberValid
     private String phoneNumber;
     private String specialization;
     private LocalDate createdAt;
@@ -38,10 +38,4 @@ public class Instructor {
     private List<Company>companies;
     @OneToMany(mappedBy = "instructor",cascade = ALL)
     private List<Course>courses;
-
-
-
-
-
-
 }

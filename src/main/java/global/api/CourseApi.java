@@ -3,12 +3,10 @@ package global.api;
 import global.dto.SimpleResponse;
 import global.dto.request.CourseRequest;
 import global.dto.response.CourseResponse;
-import global.entity.Course;
 import global.service.CompanyService;
 import global.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -17,7 +15,6 @@ import java.util.List;
 public class CourseApi {
 
     private final CourseService courseService;
-    private final CompanyService companyService;
 
     @GetMapping
     public List<CourseResponse> getAllCourse(){
@@ -58,6 +55,5 @@ public class CourseApi {
     @GetMapping("/getAll")
     public List<CourseResponse> getAllCourses( @RequestParam  Long companyId, @RequestParam String ascOrDesc) {
         return courseService.sortCourse(companyId,ascOrDesc);
-
     }
 }

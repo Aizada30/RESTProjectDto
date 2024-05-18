@@ -3,13 +3,9 @@ package global.api;
 import global.dto.SimpleResponse;
 import global.dto.request.LessonRequest;
 import global.dto.response.LessonResponse;
-import global.entity.Course;
-import global.repo.CourseRepo;
-import global.service.CourseService;
 import global.service.LessonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RequestMapping("/api/lesson")

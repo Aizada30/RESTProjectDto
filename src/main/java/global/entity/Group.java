@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDate;
 import java.util.List;
-
 import static jakarta.persistence.CascadeType.*;
 
 @Entity
@@ -37,6 +35,4 @@ public class Group {
 
     @OneToMany(mappedBy = "group", cascade = ALL)
     private List<Student> students;
-
-
 }

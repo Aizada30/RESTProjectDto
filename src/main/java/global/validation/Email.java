@@ -2,12 +2,8 @@ package global.validation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-
 import java.lang.annotation.*;
 
-/**
- * Abdyrazakova Aizada
- */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = EmailValid.class)

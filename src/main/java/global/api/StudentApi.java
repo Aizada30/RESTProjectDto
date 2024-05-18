@@ -4,9 +4,9 @@ import global.dto.SimpleResponse;
 import global.dto.request.StudentRequest;
 import global.dto.response.StudentResponse;
 import global.service.StudentService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RequestMapping("/api/student")
@@ -22,7 +22,7 @@ public class StudentApi {
     }
 
     @PostMapping
-    public SimpleResponse saveStudent(@RequestBody StudentRequest studentRequest){
+    public SimpleResponse saveStudent(@RequestBody @Valid StudentRequest studentRequest){
         return studentService.saveStudent(studentRequest);
     }
 
@@ -46,9 +46,13 @@ public class StudentApi {
         return studentService.assignToGroup(groupId,studentId);
     }
 
+    @PostMapping("/block")
+    public SimpleResponse blockStudent(@PathVariable Boolean word,@PathVariable Long studentId){
+        return studentService.blockStudent(word,studentId);
+    }
+
     @GetMapping("/filter")
     public List<StudentResponse> getFilterStudent(@RequestParam String studyFormat){
         return studentService.getFilter(studyFormat);
     }
-
 }

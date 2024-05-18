@@ -3,15 +3,12 @@ package global.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import global.validation.PhoneNumberValid;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDate;
 import java.util.List;
-
 import static jakarta.persistence.CascadeType.*;
 
 @Entity
@@ -34,14 +31,13 @@ public class Company {
     private String name;
     private String country;
     private String address;
+    @PhoneNumberValid
     private String phoneNumber;
     private LocalDate createdAt;
-    private Role role;
     @ManyToMany(cascade ={PERSIST,DETACH,REFRESH,MERGE})
     @JsonIgnore
     private List<Instructor> instructors;
     @OneToMany(mappedBy = "company",cascade=ALL)
     @JsonIgnore
     private List<Course>courses;
-
 }

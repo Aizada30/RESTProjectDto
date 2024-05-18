@@ -3,7 +3,6 @@ package global.service;
 import global.dto.SimpleResponse;
 import global.dto.request.CourseRequest;
 import global.dto.response.CourseResponse;
-
 import java.util.List;
 
 public interface CourseService {

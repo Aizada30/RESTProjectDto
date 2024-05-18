@@ -3,10 +3,7 @@ package global.service;
 import global.dto.SimpleResponse;
 import global.dto.request.InstructorRequest;
 import global.dto.response.InstructorResponse;
-
-
 import java.util.List;
-
 
 public interface InstructorService {
 
@@ -17,5 +14,4 @@ public interface InstructorService {
     InstructorResponse getInstructorById(Long instructorId);
     SimpleResponse assignWithCompany(Long companyId,Long instructorId);
     StudentCountResponse getCountStudent(Long id);
-
 }

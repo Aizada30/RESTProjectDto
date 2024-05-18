@@ -12,5 +12,4 @@ public class InstructorRequest {
     @PhoneNumberValid
     private String phoneNumber;
     private String specialization;
-
 }

@@ -1,17 +1,9 @@
 package global.dto.response;
 
-import global.entity.Course;
-import global.entity.Instructor;
 import jakarta.persistence.Column;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalDate;
-import java.util.List;
-
-import static jakarta.persistence.CascadeType.*;
 
 @Setter
 @Getter
@@ -23,7 +15,6 @@ public class CompanyResponse {
     private String address;
     private String phoneNumber;
     private LocalDate createdAt;
-
 
     public CompanyResponse(Long id, String name, String country, String address, String phoneNumber, LocalDate createdAt) {
         this.id = id;

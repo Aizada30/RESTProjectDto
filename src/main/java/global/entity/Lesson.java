@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDate;
 import java.util.List;
-
 import static jakarta.persistence.CascadeType.*;
 import static jakarta.persistence.CascadeType.REFRESH;
 
@@ -34,6 +32,4 @@ public class Lesson {
     private List<Task> tasks;
     @ManyToOne(cascade ={PERSIST,DETACH,REFRESH,MERGE})
     private Course course;
-
 }
-

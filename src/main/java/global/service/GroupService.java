@@ -3,7 +3,6 @@ package global.service;
 import global.dto.SimpleResponse;
 import global.dto.request.GroupRequest;
 import global.dto.response.GroupResponse;
-
 import java.util.List;
 
 public interface GroupService {

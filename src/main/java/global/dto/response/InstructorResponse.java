@@ -3,7 +3,6 @@ package global.dto.response;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDate;
 
 @Setter
@@ -17,7 +16,6 @@ public class InstructorResponse {
     private String specialization;
     private LocalDate createdAt;
 
-
     public InstructorResponse(Long id, String firstName, String lastName, String phoneNumber, String specialization, LocalDate createdAt) {
         this.id = id;
         this.firstName = firstName;
@@ -26,6 +24,4 @@ public class InstructorResponse {
         this.specialization = specialization;
         this.createdAt = createdAt;
     }
-
-
 }
